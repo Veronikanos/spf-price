@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Обчислення витрат</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .item {
+        margin-bottom: 10px;
+      }
+      label {
+        margin-right: 10px;
+      }
+      input {
+        padding: 5px;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .itemnumber {
+        color: brown;
+        background-color: blanchedalmond;
+        padding: 10px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Обчислення загальної суми витрат</h1>
+
+    <!-- Форма для введення даних товарів -->
+    <div id="items">
+      <div class="item">
+        <span class="itemnumber">1</span>
+        <label for="moq1">Повнорозмірна SPF:</label>
+        <input
+          type="number"
+          id="moq1"
+          placeholder="MOQ товару 1"
+          value="5000"
+          min="5000"
+          required
+        />
+        <label for="price1">Ціна:</label>
+        <input
+          type="number"
+          id="price1"
+          placeholder="Ціна товару 1"
+          value="2.8"
+          required
+        />
+
+        <div class="result1">
+          <p>Сума: <span id="totalCost1">0</span> $</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="itemnumber">2</span>
+        <label for="moq2">Повнорозмірна SPF:</label>
+        <input
+          type="number"
+          id="moq2"
+          placeholder="MOQ товару 2"
+          value="5000"
+          min="5000"
+          required
+        />
+        <label for="price2">Ціна:</label>
+        <input
+          type="number"
+          id="price2"
+          placeholder="Ціна товару 2"
+          value="2.8"
+          required
+        />
+        <div class="result2">
+          <p>Сума: <span id="totalCost2">0</span> $</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="itemnumber">1</span>
+        <label for="moq3">Міні 15ml:</label>
+        <input
+          type="number"
+          id="moq3"
+          placeholder="MOQ товару 3"
+          value="10000"
+          required
+        />
+        <label for="price3">Ціна 15ml:</label>
+        <input
+          type="number"
+          id="price3"
+          placeholder="Ціна товару 3"
+          value="1.5"
+          required
+        />
+        <div class="result3">
+          <p>Сума: <span id="totalCost3">0</span> $</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="itemnumber">2</span>
+        <label for="moq4">Міні 15ml:</label>
+        <input
+          type="number"
+          id="moq4"
+          placeholder="MOQ товару 4"
+          value="10000"
+          required
+        />
+        <label for="price4">Ціна 15ml:</label>
+        <input
+          type="number"
+          id="price4"
+          placeholder="Ціна товару 4"
+          value="1.5"
+          required
+        />
+        <div class="result4">
+          <p>Сума: <span id="totalCost4">0</span> $</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="itemnumber">1</span>
+        <label for="moq5">Сашет 1,5ml:</label>
+        <input
+          type="number"
+          id="moq5"
+          placeholder="MOQ товару 5"
+          value="50000"
+          required
+        />
+        <label for="price5">Ціна сашет 1.5ml:</label>
+        <input
+          type="number"
+          id="price5"
+          placeholder="Ціна товару 5"
+          value="0.25"
+          required
+        />
+        <div class="result5">
+          <p>Сума: <span id="totalCost5">0</span> $</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="itemnumber">2</span>
+        <label for="moq6">Сашет 1.5ml:</label>
+        <input
+          type="number"
+          id="moq6"
+          placeholder="MOQ товару 6"
+          value="50000"
+          required
+        />
+        <label for="price4">Ціна сашет 1,5ml:</label>
+        <input
+          type="number"
+          id="price6"
+          placeholder="Ціна товару 6"
+          value="0.25"
+          required
+        />
+        <div class="result6">
+          <p>Сума: <span id="totalCost6">0</span> $</p>
+        </div>
+      </div>
+      <button onclick="calculateTotalCost()">Обчислити</button>
+    </div>
+
+    <!-- Блок для виведення результату -->
+    <div class="result">
+      <p>Загальна сума витрат: <span id="totalCost">0</span> $</p>
+    </div>
+
+    <script>
+      // Функція для обчислення загальної суми витрат
+      function calculateTotalCost() {
+        // Отримуємо значення з полів форми
+        const moq1 = document.getElementById("moq1").value;
+        const price1 = document.getElementById("price1").value;
+
+        const moq2 = document.getElementById("moq2").value;
+        const price2 = document.getElementById("price2").value;
+
+        const moq3 = document.getElementById("moq3").value;
+        const price3 = document.getElementById("price3").value;
+
+        const moq4 = document.getElementById("moq4").value;
+        const price4 = document.getElementById("price4").value;
+
+        const moq5 = document.getElementById("moq5").value;
+        const price5 = document.getElementById("price5").value;
+
+        const moq6 = document.getElementById("moq6").value;
+        const price6 = document.getElementById("price6").value;
+
+        const totalCost1 = moq1 * price1;
+        const totalCost2 = moq2 * price2;
+        const totalCost3 = moq3 * price3;
+        const totalCost4 = moq4 * price4;
+        const totalCost5 = moq5 * price5;
+        const totalCost6 = moq6 * price6;
+
+        // Обчислюємо загальну суму витрат
+        const totalCost =
+          totalCost1 +
+          totalCost2 +
+          totalCost3 +
+          totalCost4 +
+          totalCost5 +
+          totalCost6;
+
+        document.getElementById("totalCost1").innerText = totalCost1;
+
+        document.getElementById("totalCost2").innerText = totalCost2;
+
+        document.getElementById("totalCost3").innerText = totalCost3;
+
+        document.getElementById("totalCost4").innerText = totalCost4;
+
+        document.getElementById("totalCost5").innerText = totalCost5;
+
+        document.getElementById("totalCost6").innerText = totalCost6;
+
+        // Виводимо результат
+        document.getElementById("totalCost").innerText = totalCost;
+      }
+
+      // Функція для перевірки введених значень
+      function validateMoq(input) {
+        if (parseInt(input.value) < 5000) {
+          input.setCustomValidity(
+            "Мінімальна кількість товару має бути не менше 5000"
+          );
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+      // Функція для перевірки введених значень
+      function validateMoqMini(input) {
+        if (parseInt(input.value) < 10000) {
+          input.setCustomValidity(
+            "Мінімальна кількість товару має бути не менше 10000"
+          );
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+
+      // Додаємо перевірку на кожне поле вводу
+      document.getElementById("moq1").addEventListener("input", function () {
+        validateMoq(this);
+      });
+
+      document.getElementById("moq2").addEventListener("input", function () {
+        validateMoq(this);
+      });
+
+      document.getElementById("moq3").addEventListener("input", function () {
+        validateMoqMini(this);
+      });
+      document.getElementById("moq4").addEventListener("input", function () {
+        validateMoqMini(this);
+      });
+      document.getElementById("moq5").addEventListener("input", function () {
+        validateMoqMini(this);
+      });
+      document.getElementById("moq6").addEventListener("input", function () {
+        validateMoqMini(this);
+      });
+    </script>
+  </body>
+</html>
